@@ -583,9 +583,9 @@ void RimeState::showChangedOptions() {
         }
 
         // This is hard coded latin-mode.
-        if (option == "ascii_mode") {
+        /* if (option == "ascii_mode") {
             continue;
-        }
+        } */
 
         // Filter by action, so we know this option belongs to current schema.
         auto actionIter = std::find_if(
