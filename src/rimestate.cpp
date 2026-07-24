@@ -517,7 +517,8 @@ void RimeState::restore() {
     if (savedCurrentSchema_.empty()) {
         return;
     }
-    if (!std::count(engine_->schemas().begin(), engine_->schemas().end(), savedCurrentSchema_)) {
+    if (!std::count(engine_->schemas().begin(), engine_->schemas().end(),
+                    savedCurrentSchema_)) {
         return;
     }
 
