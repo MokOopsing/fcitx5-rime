@@ -291,6 +291,9 @@ void RimeEngine::rimeStart(bool fullcheck) {
     auto userDir =
         StandardPaths::global().userDirectory(StandardPathsType::PkgData) /
         "rime";
+    auto stageDir =
+        StandardPaths::global().userDirectory(StandardPathsType::PkgData) /
+        "rime-build";
     RIME_DEBUG() << "Rime data directory: " << userDir;
     if (!fs::makePath(userDir)) {
         if (!fs::isdir(userDir)) {
@@ -302,6 +305,7 @@ void RimeEngine::rimeStart(bool fullcheck) {
     fcitx_rime_traits.shared_data_dir = sharedDataDir_.c_str();
     fcitx_rime_traits.app_name = "rime.fcitx-rime";
     fcitx_rime_traits.user_data_dir = userDir.c_str();
+    fcitx_rime_traits.staging_dir = stageDir.c_str();
     fcitx_rime_traits.distribution_name = "Rime";
     fcitx_rime_traits.distribution_code_name = "fcitx-rime";
     fcitx_rime_traits.distribution_version = FCITX_RIME_VERSION;
