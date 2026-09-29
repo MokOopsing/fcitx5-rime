@@ -291,13 +291,19 @@ void RimeEngine::rimeStart(bool fullcheck) {
     auto userDir =
         StandardPaths::global().userDirectory(StandardPathsType::PkgData) /
         "rime";
-    auto stageDir =
-        StandardPaths::global().userDirectory(StandardPathsType::PkgData) /
-        "rime-build";
     RIME_DEBUG() << "Rime data directory: " << userDir;
     if (!fs::makePath(userDir)) {
         if (!fs::isdir(userDir)) {
             RIME_ERROR() << "Failed to create user directory: " << userDir;
+        }
+    }
+    auto stageDir =
+        StandardPaths::global().userDirectory(StandardPathsType::PkgData) /
+        "rime-build";
+    RIME_DEBUG() << "Rime build directory: " << stageDir;
+    if (!fs::makePath(stageDir)) {
+        if (!fs::isdir(stageDir)) {
+            RIME_ERROR() << "Failed to create user directory: " << stageDir;
         }
     }
 
